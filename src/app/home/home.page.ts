@@ -10,33 +10,21 @@ import { NavController, ToastController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  public url = "https://dog.ceo/api/breeds/image/random"
-  public imagem = ''
-  public result: any = {}
-  dadosCachorro = { nome: '', idade: '' }
+  
+  dadosCachorro = { 
+  nome: '', 
+  idade: '',
+};
   labelBotao = 'Cadastrar'
+  
 
   constructor(
     private http: HttpClient,
     public nav: NavController,
     public mensagem: ToastController,
-    private meuDogSerice: meuDogService
+    private meuDogService: meuDogService
   ) { }
-  gerar() {
-    this.consultaApi().subscribe((resp) => {
-      this.result = resp;
-      this.imagem = this.result.message;
-    },
-      (error) => { }
-    );
-  }
-
-  consultaApi() {
-    const header = {
-      headers: new Headers().set('Content-Type', 'application/json'),
-    };
-    return this.http.get(this.url);
-  }
+ 
 
   cadastrar() {
     if (this.dadosCachorro.nome == '' || this.dadosCachorro.idade == '') {
@@ -60,7 +48,7 @@ export class HomePage {
 
   }
 
-  salvamento() {
-      this.nav.navigateRoot('cadastro')
-  }
+   salvamento() {
+       this.nav.navigateRoot('cadastro')
+   }
 }

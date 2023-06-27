@@ -10,7 +10,8 @@
             expand="block"
             style="color: #222"
             placeholder="Nome"
-            maxlength = "8"></ion-input>
+            maxlength = "8"
+            [(ngModel)] = "dadosCachorro.nome"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -23,7 +24,9 @@
             expand="block"
             style="color: #222"
             placeholder="Ex: 5"
-            maxlength = "8"></ion-input>
+            maxlength = "8"
+            [(ngModel)] = "dadosCachorro.idade">
+          </ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
