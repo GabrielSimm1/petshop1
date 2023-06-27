@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http'
+import { NavController } from '@ionic/angular';
+//import { HttpClient} from '@angular/common/http'
 @Injectable({
   providedIn: 'root'
 })
-export class meuDogSerive {
-private url: string = "https://dog.ceo/api/breeds/image/random"
+export class meuDogService {
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private nav: NavController) { }
 }

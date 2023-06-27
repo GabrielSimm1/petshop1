@@ -1,20 +1,37 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="divPrincipal">
+    <ion-row style="margin-top: 30px">
+      <ion-col id="coluna">
+        <ion-item class="roundedInput" line="none">
+          <ion-label position="floating">Nome<span style="color: red">*</span></ion-label>
+          <ion-input
+            type="text"
+            expand="block"
+            style="color: #222"
+            placeholder="Nome"
+            maxlength = "8"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin-top: 30px">
+      <ion-col id="coluna">
+        <ion-item class="roundedInput" line="none">
+          <ion-label position="floating">Idade<span style="color: red">*</span></ion-label>
+          <ion-input
+            type="text"
+            expand="block"
+            style="color: #222"
+            placeholder="Ex: 5"
+            maxlength = "8"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button shape="block" (click)="cadastrar()">{{labelBotao}}</ion-button>
+      </ion-col>
+    </ion-row>
   </div>
 </ion-content>
+
