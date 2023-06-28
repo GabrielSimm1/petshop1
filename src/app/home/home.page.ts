@@ -30,7 +30,7 @@ export class HomePage {
     if (this.dadosCachorro.nome == '' || this.dadosCachorro.idade == '') {
       this.exibeToast('Preenche os campos necessários', 'danger')
     } else {
-      this.salvamento();
+      //this.salvamento();
       this.nav.navigateForward('cadastro')
     }
   }
@@ -48,7 +48,9 @@ export class HomePage {
 
   }
 
-   salvamento() {
-       this.nav.navigateRoot('cadastro')
-   }
+   //salvamento() {
+      // this.nav.navigateRoot('cadastro')
+  // }
+
+   
 }

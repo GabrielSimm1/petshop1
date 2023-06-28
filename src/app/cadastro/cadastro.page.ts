@@ -16,6 +16,7 @@ export class CadastroPage implements OnInit {
   public url = 'https://dog.ceo/api/breeds/image/random';
   public imagem = '';
   public result: any = {};
+  
 
   constructor(private nav: NavController, private http: HttpClient) {}
 
@@ -35,6 +36,10 @@ export class CadastroPage implements OnInit {
     };
     return this.http.get(this.url);
   }
+  voltar(){
+    this.nav.navigateBack('home')
+  
+   }
 
  
 

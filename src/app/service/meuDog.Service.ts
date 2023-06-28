@@ -7,9 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class meuDogService {
-  public url = "https://dog.ceo/api/breeds/image/random"
-  public imagem = ''
-  public result: any = {}
+
   constructor(
     private nav: NavController,
     private http: HttpClient,
