@@ -1,34 +1,32 @@
+<ion-header>
+  <ion-row>
+    <ion-col>
+      <ion-button
+        size="small"
+        color="primary"
+        fill="outline"
+        (click)="voltar()"
+      >
+        <ion-icon name="arrow-back-sharp"></ion-icon>
+        <ion-label style="margin-top: 0; margin-left: 6px">Voltar</ion-label>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-header>
 <ion-content [fullscreen]="true">
-  <div>
-    <ion-card mode="ios">
-      <img src="{{imagem}}" width="400" height="400" />
-      <ion-card-header>
-        <ion-card-title>Idade: {{dadosCachorro.idade}}</ion-card-title>
-        <ion-card-title>Nome: {{dadosCachorro.nome}} </ion-card-title>
-      </ion-card-header>
 
-      <ion-card-content>
-        <ion-row>
-          
-           <ion-col>
-          <ion-button size="small" color="primary" fill="outline"(click)="voltar()">
-            <ion-icon name="arrow-back-sharp"></ion-icon>
-            <ion-label style="margin-top: 0; margin-left: 6px">Voltar</ion-label>
-          </ion-button>
-        </ion-col>
-          <ion-col size="4">
-            <ion-button size="small" color="danger">
-              <ion-icon name="trash-outline"></ion-icon>
-              <ion-label style="margin-top: 0; margin-left: 6px"
-                >Excluir
-              </ion-label>
-            </ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-card-content>
+  <div *ngFor="let dados of dadosCachorro">
+    <ion-card mode="ios">
+      <img src="{{dados.imagem}}" width="400" height="300" />
+      <ion-card-title>{{dados.nome}}</ion-card-title>
+      <ion-card-subtitle>{{dados.idade}} </ion-card-subtitle>
+      <ion-col size="7">
+        <ion-button size="small" color="danger">
+          <ion-icon name="trash-outline"></ion-icon>
+          <ion-label style="margin-top: 0; margin-left: 6px" (click)="deletar(dados.nome)">Excluir </ion-label>
+        </ion-button>
+      </ion-col>
     </ion-card>
   </div>
-  <div class = "gerarImg">
-  <ion-button expand="full"(click)="gerar()">Alterar imagem do cachorro</ion-button>
-  </div>
+
 </ion-content>

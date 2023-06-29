@@ -22,7 +22,7 @@ export class HomePage {
     private http: HttpClient,
     public nav: NavController,
     public mensagem: ToastController,
-    private meuDogService: meuDogService
+    public meuDogService: meuDogService
   ) { }
  
 
@@ -30,8 +30,8 @@ export class HomePage {
     if (this.dadosCachorro.nome == '' || this.dadosCachorro.idade == '') {
       this.exibeToast('Preenche os campos necessários', 'danger')
     } else {
-      //this.salvamento();
-      this.nav.navigateForward('cadastro')
+      this.salvaDog();
+      //this.nav.navigateForward('cadastro')
     }
   }
 
@@ -48,9 +48,12 @@ export class HomePage {
 
   }
 
-   //salvamento() {
-      // this.nav.navigateRoot('cadastro')
-  // }
+   salvaDog() {
+      this.meuDogService.salvarDog(
+        this.dadosCachorro.nome, 
+        this.dadosCachorro.idade)
+        this.nav.navigateRoot('cadastro')
+   }
 
    
 }

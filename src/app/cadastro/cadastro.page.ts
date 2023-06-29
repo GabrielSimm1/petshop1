@@ -1,9 +1,7 @@
-import { HttpClient , HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
-
-
-
+import { AlertController, NavController } from '@ionic/angular';
+import { meuDogService } from '../service/meuDog.Service';
 
 @Component({
   selector: 'app-cadastro',
@@ -11,37 +9,60 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./cadastro.page.scss'],
 })
 export class CadastroPage implements OnInit {
-  dadosCachorro = { nome: '', idade: '' };
+  public dadosCachorro: any = [] = [];
 
   public url = 'https://dog.ceo/api/breeds/image/random';
   public imagem = '';
   public result: any = {};
-  
 
-  constructor(private nav: NavController, private http: HttpClient) {}
-
-  gerar() {
-    this.consultaApi().subscribe(
-      (resp) => {
-        this.result = resp;
-        this.imagem = this.result.message;
-      },
-      (error) => {}
-    );
+  constructor(
+    private nav: NavController,
+    private http: HttpClient,
+    public meuDogService: meuDogService,
+    public alerta: AlertController
+  ) {}
+  ngOnInit() {
+    this.carregaDados();
   }
-
-  consultaApi() {
-    const header = {
-      headers: new Headers().set('Content-Type', 'application/json'),
-    };
-    return this.http.get(this.url);
-  }
-  voltar(){
-    this.nav.navigateBack('home')
   
+    ionViewDidEnter() {
+    this.carregaDados();
    }
+  async voltar() {
+    const voltando = await this.alerta.create({
+      header: 'ATENÇÃO!',
+      message: 'Deseja voltar?',
+      buttons: [
+        {
+          text: 'Não',
+          role: 'cancel',
+        },
+        {
+          text: 'Sim',
+          handler: () => {
+            //localStorage.clear();
+            this.nav.navigateForward('/');
+          },
+        },
+      ],
+    });
 
- 
+    await voltando.present();
+  }
 
-  ngOnInit() {}
+  
+
+
+  carregaDados() {
+    if (this.meuDogService.listar()) {
+      this.dadosCachorro = this.meuDogService.listar()!;
+    }
+  }
+
+  deletar(params: string){
+   this.meuDogService.deletar(params)
+   this.carregaDados()
+  }
+  
+  
 }
