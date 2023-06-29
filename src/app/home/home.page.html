@@ -1,40 +1,36 @@
+<ion-content class="ion-padding">
+  <br /><br />
+  <h1 class="ion-text-center logo-white">Cadastre seu cachorro!</h1>
+  <br />
+  <br />
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label position="stacked">Nome</ion-label>
+      <ion-input
+        placeholder="Nome"
+        [(ngModel)]="dadosCachorro.nome"
+      ></ion-input>
+    </ion-item>
 
-<ion-content [fullscreen]="true">
-  <div class="divPrincipal">
-    <ion-row style="margin-top: 30px">
-      <ion-col id="coluna">
-        <ion-item class="roundedInput" line="none">
-          <ion-label position="floating">Nome<span style="color: red">*</span></ion-label>
-          <ion-input
-            type="text"
-            expand="block"
-            style="color: #222"
-            placeholder="Nome"
-            maxlength = "8"
-            [(ngModel)] = "dadosCachorro.nome"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row style="margin-top: 30px">
-      <ion-col id="coluna">
-        <ion-item class="roundedInput" line="none">
-          <ion-label position="floating">Idade<span style="color: red">*</span></ion-label>
-          <ion-input
-            type="text"
-            expand="block"
-            style="color: #222"
-            placeholder="Ex: 5"
-            maxlength = "8"
-            [(ngModel)] = "dadosCachorro.idade">
-          </ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-button shape="block" (click)="cadastrar()">{{labelBotao}}</ion-button>
-      </ion-col>
-    </ion-row>
-  </div>
+    <ion-item>
+      <ion-label position="stacked">Idade</ion-label>
+      <ion-input
+        placeholder="Idade"
+        [(ngModel)]="dadosCachorro.idade"
+      ></ion-input>
+    </ion-item>
+  </ion-list>
+  <br />
+  <ion-button
+    ion-item
+    color="dark"
+    fill="outline"
+    shape="round"
+    expand="full"
+    size="medium"
+    (click)="cadastrar()"
+  >
+    Cadastrar
+  </ion-button>
+  <br />
 </ion-content>
-

@@ -1,32 +1,33 @@
 <ion-header>
-  <ion-row>
-    <ion-col>
-      <ion-button
-        size="small"
-        color="primary"
-        fill="outline"
-        (click)="voltar()"
-      >
-        <ion-icon name="arrow-back-sharp"></ion-icon>
-        <ion-label style="margin-top: 0; margin-left: 6px">Voltar</ion-label>
-      </ion-button>
-    </ion-col>
-  </ion-row>
+  <ion-toolbar>
+    <ion-title class = "tituloCadastro">Cachorros cadastrados</ion-title>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          size="small"
+          color="primary"
+          (click)="voltar()">
+          <ion-icon name="arrow-back-sharp"></ion-icon>
+          <ion-label style="margin-top: 0; margin-left: 6px">Voltar</ion-label>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-
   <div *ngFor="let dados of dadosCachorro">
     <ion-card mode="ios">
       <img src="{{dados.imagem}}" width="400" height="300" />
-      <ion-card-title>{{dados.nome}}</ion-card-title>
-      <ion-card-subtitle>{{dados.idade}} </ion-card-subtitle>
-      <ion-col size="7">
-        <ion-button size="small" color="danger">
+      <ion-card-title class ="nome">{{dados.nome}}</ion-card-title>
+      <ion-card-subtitle class="sobrenome">{{dados.idade}} anos </ion-card-subtitle>
+      <ion-col>
+        <ion-button class="excluir" size="small" color="danger">
           <ion-icon name="trash-outline"></ion-icon>
-          <ion-label style="margin-top: 0; margin-left: 6px" (click)="deletar(dados.nome)">Excluir </ion-label>
+          <ion-label (click)="deletar(dados.nome)">Excluir </ion-label>
         </ion-button>
       </ion-col>
     </ion-card>
   </div>
+
 
 </ion-content>

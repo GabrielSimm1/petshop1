@@ -31,6 +31,7 @@ export class HomePage {
       this.exibeToast('Preenche os campos necessários', 'danger')
     } else {
       this.salvaDog();
+      this.sucessToast("Cachorro cadastrado com sucesso!")
       //this.nav.navigateForward('cadastro')
     }
   }
@@ -46,6 +47,17 @@ export class HomePage {
 
     toast.present();
 
+  }
+  async sucessToast(message: string) {
+    const toast = await this.mensagem.create({
+      message: message,
+      duration: 2000,
+      position: 'top',
+      animated: true,
+      color: 'success'
+    });
+
+    toast.present();
   }
 
    salvaDog() {

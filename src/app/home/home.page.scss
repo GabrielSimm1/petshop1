@@ -1,0 +1,22 @@
+ion-content {
+    --background: rgb(0, 191, 181);
+    --background: linear-gradient(45deg, rgba(0, 191, 181, 1) 35%, rgba(0, 124, 191, 1) 70%);
+
+    --ion-text-color: #fff;
+
+    ion-list {
+        border-radius: 5px;
+
+        max-width: 600px;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    ion-button {
+        max-width: 600px;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

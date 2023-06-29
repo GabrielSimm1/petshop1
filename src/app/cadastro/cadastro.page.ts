@@ -21,8 +21,8 @@ export class CadastroPage implements OnInit {
     public meuDogService: meuDogService,
     public alerta: AlertController
   ) {}
-  ngOnInit() {
-    this.carregaDados();
+    ngOnInit() {
+     //this.carregaDados();
   }
   
     ionViewDidEnter() {
@@ -40,7 +40,7 @@ export class CadastroPage implements OnInit {
         {
           text: 'Sim',
           handler: () => {
-            //localStorage.clear();
+            
             this.nav.navigateForward('/');
           },
         },
@@ -59,7 +59,7 @@ export class CadastroPage implements OnInit {
     }
   }
 
-  deletar(params: string){
+   deletar(params: string){
    this.meuDogService.deletar(params)
    this.carregaDados()
   }
