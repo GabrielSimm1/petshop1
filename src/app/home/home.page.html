@@ -1,11 +1,11 @@
-<ion-content class="ion-padding">
+<ion-content>
   <br /><br />
   <h1 class="ion-text-center logo-white">Cadastre seu cachorro!</h1>
   <br />
   <br />
   <ion-list lines="none">
     <ion-item>
-      <ion-label position="stacked">Nome</ion-label>
+      <ion-label position="floating">Nome</ion-label>
       <ion-input
         placeholder="Nome"
         [(ngModel)]="dadosCachorro.nome"
@@ -13,7 +13,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Idade</ion-label>
+      <ion-label position="floating">Idade</ion-label>
       <ion-input
         placeholder="Idade"
         [(ngModel)]="dadosCachorro.idade"
@@ -28,9 +28,6 @@
     shape="round"
     expand="full"
     size="medium"
-    (click)="cadastrar()"
-  >
-    Cadastrar
-  </ion-button>
+    (click)="cadastrar()">{{labelBotao}}</ion-button>
   <br />
 </ion-content>

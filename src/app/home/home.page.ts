@@ -24,18 +24,21 @@ export class HomePage {
     public mensagem: ToastController,
     public meuDogService: meuDogService
   ) { }
- 
 
+   ionViewDidEnter() {
+    this.limpaDado();
+   }
+//Funcao para cadastrar os cachorros no app, caso os campos não forem preenchidos, aparecerá um alerta
   cadastrar() {
     if (this.dadosCachorro.nome == '' || this.dadosCachorro.idade == '') {
       this.exibeToast('Preenche os campos necessários', 'danger')
     } else {
       this.salvaDog();
       this.sucessToast("Cachorro cadastrado com sucesso!")
-      //this.nav.navigateForward('cadastro')
+      this.nav.navigateForward('cadastro')
     }
   }
-
+//Funcao para exibir mensagem de sucesso ou de alerta para o usuário
   async exibeToast(msg: string, cor: string) {
     const toast = await this.mensagem.create({
       message: msg,
@@ -48,6 +51,7 @@ export class HomePage {
     toast.present();
 
   }
+  //Mensagem de sucesso ao cadastrar um cachorro
   async sucessToast(message: string) {
     const toast = await this.mensagem.create({
       message: message,
@@ -59,12 +63,18 @@ export class HomePage {
 
     toast.present();
   }
-
+//Salva os cachorros cadastrado no LocalStorage
    salvaDog() {
       this.meuDogService.salvarDog(
         this.dadosCachorro.nome, 
         this.dadosCachorro.idade)
-        this.nav.navigateRoot('cadastro')
+   }
+
+   //limpa campos 'Nome' e 'Idade' ao clicar no botao 'Cadastrar'
+   limpaDado(){
+    this.labelBotao = 'Cadastrar';
+    this.dadosCachorro.nome = '';
+    this.dadosCachorro.idade = '';
    }
 
    

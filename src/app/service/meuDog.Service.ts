@@ -13,6 +13,8 @@ export class meuDogService {
   public result: any = {};
   constructor(private nav: NavController, private http: HttpClient) {}
   
+  
+  //Funcao para gerar imagem aleatória de um cachorro consultando a API.
   gerar() {
     return new Promise<string>(async(resolve, reject)=>{
      try{
@@ -24,14 +26,14 @@ export class meuDogService {
      }
     })
    }
- 
+ //funcao para fazer a consulta na API.
    consultaApi() {
      const header = {
        headers: new Headers().set('Content-Type', 'application/json'),
      };
      return this.http.get(this.url);
    }
-
+//funcao para salvar o dog no LocalStorage
    async salvarDog(nome: string, idade: string) {
     const dados = {
       nome: nome,
@@ -49,7 +51,7 @@ export class meuDogService {
       localStorage.setItem(this.key, JSON.stringify(colecao));
     }
   }
-
+//funcao para adicionar cachorros na lista
   listar(){
     const values = localStorage.getItem(this.key);
 
@@ -59,7 +61,7 @@ export class meuDogService {
     const colecao: any[] = JSON.parse(values);
     return colecao;
   }
- 
+ //funcao para deletar os cachorros cadastrados
   deletar(params: any){
     const values = this.listar();
     const result = values?.filter(meuDogService => meuDogService.nome  !== params);

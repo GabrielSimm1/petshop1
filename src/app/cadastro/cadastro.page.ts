@@ -21,9 +21,8 @@ export class CadastroPage implements OnInit {
     public meuDogService: meuDogService,
     public alerta: AlertController
   ) {}
-    ngOnInit() {
-     //this.carregaDados();
-  }
+
+    ngOnInit() {}
   
     ionViewDidEnter() {
     this.carregaDados();
@@ -56,6 +55,10 @@ export class CadastroPage implements OnInit {
   carregaDados() {
     if (this.meuDogService.listar()) {
       this.dadosCachorro = this.meuDogService.listar()!;
+      console.log(this.dadosCachorro);
+      if(this.dadosCachorro.lenght == 0){
+        this.voltar();
+      }
     }
   }
 
